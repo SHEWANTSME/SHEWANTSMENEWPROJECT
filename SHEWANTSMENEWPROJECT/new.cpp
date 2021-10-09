@@ -3,12 +3,16 @@
 using namespace std;
 
 int main() {
-	int a, b, i, sum = 0;
-	cin >> a >> b;
-	for (i = a; i < b; i++) {
-		cout << i << " + ";
-		sum = sum + i;
+
+	int a,i, sum = 0;
+	cin >> a;
+	cout << "1";
+	for (i = 2; i < a; i++) {
+		if (a%i == 0) {
+			sum = sum + i;
+			
+			cout <<  " + "<<i; }
 		}
-	cout << b << " = " << sum+b;
+	cout <<" = " << sum+1;
 	return 0;
 }
