@@ -1,24 +1,28 @@
 #include"pch.h"
 #include <iostream>
+#include <string>
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
 using namespace std;
-
-int main() {
-
-	int number,i,tember;
-	int min = 1000, max = -1000; // max를 작은숫자, min을 클 숫자로 해야 
-
-	cin >> number;
-
-	for (i = 1; i < number + 1; i++) {
-		cin >> tember;
-		//if (i == 1) min = tember;
-		 if (tember < min) min=tember;
-		 if (tember > max) max=tember;
-	
-			}
-	cout << max - min << endl;
-	
-	return 0;
+void do_sth(int x) {
+	x = 123;
+	cout << x << endl;
 }
-//이번문제는 생각해보니 그렇게 많이 해둘것이 없는게,, 굳이 쟤네들을 배열 만들어서 정렬한다음에 min max 찾는게아니라
-//그냥  5 2 3 1 6   이러면,, 5 가 min이 되고 
+//int add(int x, int y);
+int main() {
+	int x(0);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	int t((x > 0) ? 1 : 2); // x가 0보다 크면 1 아니면 2 --> (조건) ?true : false 
+//	printf("%d", t);
+	cout<<add(3, 5)<<endl;
+	ios_base::sync_with_stdio(false);
+//	scanf_s("%d \n", &x);
+	//printf_s("%d \n", x);
+//	cout << x << endl;
+	//do_sth(x);
+	//cout << x << endl;
+	return 0;
+
+} 
