@@ -28,3 +28,27 @@
 //	else cout << 0;
 //	return 0;
 //}
+
+#include <iostream>
+#include<vector>
+#include <algorithm>
+using namespace std;
+int main() {
+	int num,sum=0;
+	cin >> num;
+	vector<int>v(num);
+	for (int i = 0; i < num; i++) {
+		cin >> v[i];
+	}
+	std::sort(v.begin(), v.end());
+	while (v.size()) {
+		for (auto &element : v) {
+			sum = sum + element;
+			
+		}v.pop_back();
+	}	
+	cout << sum << endl;
+	
+
+
+}
