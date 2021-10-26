@@ -1,28 +1,32 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int main() {
-	int cnt=1, rising=0;
-	int num;
-	cin >> num;
-	vector<int>vec(num);
-	for (int i = 0; i < num; i++) {
-		cin >> vec[i];
-	}
-
-	for (int i = 0; i < num-1; i++) {
-		if (vec[i] >= rising ) { 
-			if (vec[i + 1] < rising) rising = 0;
-			rising = vec[i];
-			cnt++;
-
+void findcoin(int a, vector<int> &v,int cnt) {
+	int alpha = a / v.back();
+	if (a - (alpha*v.back()) == 0) { cnt = cnt + alpha; }// { cout << alpha << endl; }
+	else {
+		a = a - (alpha*v.back());
+		cnt = cnt + alpha;
+		while (v.back() > a) {
+			v.pop_back();
 		}
-		//if (vec[num] >= rising) cnt++;
+		findcoin(a, v, cnt);
 	}
-	//if (vec[num-1] >= rising) cnt++;
-	cout << cnt<< endl;
+
+	cout << cnt << endl;
+	exit(0);
+}
+int main() {
+	int n, k;
+	cin >> n >> k;
+	vector<int>v(n);
+	for (int i = 0; i < n; i++) {
+		cin >> v[i];
+	}
+	while (v.back() > k) {
+		v.pop_back();
+	}
+	findcoin(k, v, 0);
 	
-
-
 }
