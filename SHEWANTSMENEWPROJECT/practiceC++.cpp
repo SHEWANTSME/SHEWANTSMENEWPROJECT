@@ -1,5 +1,5 @@
 #include "pch.h"
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 int main() {
 	int array[] = {0,3,2,4,5,6,7,9,8};
@@ -9,4 +9,6 @@ int main() {
 
 
 
+}*/int add(int x, int y) {
+return x + y;
 }
