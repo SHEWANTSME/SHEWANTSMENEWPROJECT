@@ -31,58 +31,32 @@
 //	
 //}
 #include<iostream>
-#include<vector>
 #include<string>
-#include<cmath>
 using namespace std;
+int main(){
+	string str;
+	cin >> str;
 
-int make_num(int i, vector<int>&v) {
-	//i 는 숫자 자리수
-	int j = 0;
-	int t = i;
-	int sum = 0;
-	while (j <= i) {
-		sum = sum+v[j] * std::pow(10, t-1);
-		j++; t--;
-	}
-	return sum;
-}
+	int sum = 0;int num = 0;int check = 0;
+	for (int i = 0; i < str.size(); i++){
+		if (str[i] == '-' || str[i] == '+'){
+			if (check!=0)sum -= num;  // '-' 가 한번이라도 나온 후에는 전부 빼주기
+			else sum += num;        // '-' 가 나오기 전까지는 더해주기
 
-int main() {
-	string s;
-	int a = 0;
-	cin >> s;
-	cout << s << endl;
-	vector<int>v((int)s.size());
-	vector<int>v2((int)s.size());
-	v2[0] = (int)s.at(0) - 48;
-	int k = 0;
-	for (int i = 1; i < (int)s.size(); i++) {
-		if ((int)s.at(i) == 43){
-			make_num(i, v2);
-			v[k] = 43;
-			k++;
+			num = 0;       //num수를 다시 리셋
+			if (str[i] == '-')check = 1;  //-가 나오면 flag를 true로 바꿔줌
 		}
-		else if ((int)s.at(i) == 45) {
-			make_num(i, v2);
-			v[k] = 45;
-			k++;
-		}
-		else {
-			v2[i] = (int)s.at(i) - 48;
+		else{
+			//숫자가 연속해서 나오는동안은 한 수로 붙이기
+			num = num*10;
+			num += str[i] - 48;  // 아스키코드 이용
 		}
 	}
 
+	//마지막남은 숫자도 처리해주어야 한다
+	if (check!=0)sum -= num;
+	else sum += num;
+	printf("%d ", sum);
 
-
-
-
-	cout << s.at(0) << endl;
-	cout << (int)s.at(0)-48 << endl;
-	cout << (int)s.size() << endl;
-	for (int i = 1; i < (int)s.size(); i++) {
-		if ((int)s.at(i) == 43) cout << '+'<< endl;
-		if ((int)s.at(i) == 45) cout << '-' << endl;
-	}
-
+	return 0;
 }
