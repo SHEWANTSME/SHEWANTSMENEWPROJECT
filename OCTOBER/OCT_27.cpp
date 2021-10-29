@@ -71,6 +71,7 @@ int main() {
 	int a, n,res=0,cnt=1;
 	cin >> n;
 	vector<int> v(n);
+	vector<int> memo(n);
 	for (int i = 0; i < n; i++) {
 		cin >> v[i];
 	}
@@ -78,7 +79,11 @@ int main() {
 	int	i = n - 2;
 	int j = n - 3;
 	int temp;
-	while (j > -1) {
+	memo[0] = v[0];
+	memo[1] = max(v[0] + v[1], v[1]);
+	memo[2] = max(v[0] + v[2], v[2] + v[1]);
+
+	while (j > -1 && v[i]!=v[j]) {
 		if (v[i] > v[j]) {
 			res = res + v[i];
 			cnt++;
@@ -100,16 +105,21 @@ int main() {
 			i = temp;
 			i = i - 1;
 			j = j - 1;
-			a = res;
-		}
-		else {
-			res = max(res, a);
-
 		}
 	}
-	if (cnt == 2) cout << res << endl;
-	if (cnt == 1) {
-		cout << res + v[0] << endl;
+	if (v[i] != v[j]) {
+
+		if (cnt == 2) cout << res << endl;
+		if (cnt == 1) {
+			cout << res + v[0] << endl;
+		}
+
+	}	
+	else {
+		for (int i = 3; i < n; i++) {
+			memo[i] = max(memo[i - 3] + v[i - 1], memo[i - 2] + v[i]);
+		}
+		cout << memo[n - 1] << endl;
 	}
 //	cout << res << endl;
 //	cout << res << endl;
@@ -131,4 +141,3 @@ int main() {
 	
 	return 0;
 }
-씨발 왜 안되는거야 개빡치네 ,ㅅ,ㅅ,,ㅅ,ㅅ,ㅅ
