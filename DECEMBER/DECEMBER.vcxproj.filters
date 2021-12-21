@@ -63,5 +63,8 @@
     <ClCompile Include="DEC_20.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="WHATTHEFUCK.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
